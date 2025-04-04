@@ -1,0 +1,28 @@
+/* Hide cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    #custom-cursor {
+        display: none !important;
+    }
+
+    #cursor-toggle {
+        display: none !important;
+    }
+}
+
+/* Cursor floats around the screen */
+#custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: scaleX(1);
+    width: 80px;  /* Adjust size */
+    height: 80px; /* Adjust size */
+    background-image: url('images/giphy.webp'); /* Your image */
+    background-size: cover;
+    transition: transform 0.1s ease;
+}
+
+/* Use a pointer for consistency with other links */
+#cursor-toggle {
+    cursor: pointer;
+}

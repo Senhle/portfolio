@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Languages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .row span {
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        @keyframes moveLeft {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-30px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes moveRight {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(30px); }
+            100% { transform: translateX(0); }
+        }
+
+        .row:nth-child(odd) span {
+            animation: moveLeft 3s infinite alternate ease-in-out;
+        }
+
+        .row:nth-child(even) span {
+            animation: moveRight 3s infinite alternate ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tech Languages</h2>
+    <div class="container">
+        <div class="row">
+            <span># HTML</span>
+            <span># CSS</span>
+            <span># JavaScript</span>
+            <span># Python</span>
+        </div>
+        <div class="row">
+            <span># JavaScript</span>
+            <span># Python</span>
+            <span># HTML</span>
+            <span># SQL</span>
+        </div>
+        <div class="row">
+            <span># HTML</span>
+            <span># CSS</span>
+            <span># SQL</span>
+            <span># Python</span>
+        </div>
+        <div class="row">
+            <span># SQL</span>
+            <span># CSS</span>
+            <span># JavaScript</span>
+            <span># Python</span>
+        </div>
+        <div class="row">
+            <span># CSS</span>
+            <span># JavaScript</span>
+            <span># HTML</span>
+            <span># SQL</span>
+        </div>
+    </div>
+
+</body>
+</html>
