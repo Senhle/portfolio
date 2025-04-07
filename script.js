@@ -1,57 +1,38 @@
-(function() {
-    const cursorEl = document.getElementById('custom-cursor');
-    const toggleEl = document.getElementById('cursor-toggle');
 
-    let disabled = (localStorage.getItem('disableCursor') === 'true');
-    let movingRight = false, currentX = 0, currentY = 0, targetX = 0, targetY = 0, prevX = 0;
-    const smoothness = 0.05;
+const beeModel = document.getElementById("bee-model");
+const sections = Array.from(document.querySelectorAll("section"));
 
-    // Initialize
-    disabled ? disableCursor() : enableCursor();
-    animate();
+const shiftPositions = [0, -20, 0, 25];
+const cameraOrbits = [[90, 90], [-45, 90], [-180, 0], [45, 90]];
+const sectionOffsets = sections.map(section => section.offsetTop);
+const lastSectionIndex = sections.length - 1;
 
-    // Toggle click
-    toggleEl.addEventListener('click', (e) => {
-        e.preventDefault();
-        disabled ? enableCursor() : disableCursor();
-    });
+const interpolate = (start, end, progress) => start + (end - start) * progress;
 
-    // Mouse movement tracking
-    document.addEventListener('mousemove', (e) => {
-        if (!disabled) {
-            movingRight = (e.pageX > prevX);
-            prevX = e.pageX;
-            targetX = e.clientX;
-            targetY = e.clientY;
+const getScrollProgress = scrollY => {
+    for (let i = 0; i < lastSectionIndex; i++) {
+        if (scrollY >= sectionOffsets[i] && scrollY < sectionOffsets[i + 1]) {
+            return i + (scrollY - sectionOffsets[i]) / (sectionOffsets[i + 1] - sectionOffsets[i]);
         }
-    });
-
-    // Cursor on/off
-    function enableCursor() {
-        disabled = false;
-        localStorage.setItem('disableCursor', 'false');
-        toggleEl.textContent = 'Disable Custom Cursor';
-        cursorEl.style.display = '';
-        currentX = targetX;
-        currentY = targetY;
     }
+    return lastSectionIndex;
+};
 
-    function disableCursor() {
-        disabled = true;
-        localStorage.setItem('disableCursor', 'true');
-        toggleEl.textContent = 'Enable Custom Cursor';
-        cursorEl.style.display = 'none';
-    }
+window.addEventListener("scroll", () => {
+    const scrollProgress = getScrollProgress(window.scrollY);
+    const sectionIndex = Math.floor(scrollProgress);
+    const sectionProgress = scrollProgress - sectionIndex;
 
-    // Animation loop
-    function animate() {
-        if (!disabled) {
-            currentX += (targetX - currentX) * smoothness;
-            currentY += (targetY - currentY) * smoothness;
-            cursorEl.style.left = (movingRight ? currentX - cursorEl.width : currentX) + 'px';
-            cursorEl.style.transform = 'scaleX(' + (movingRight ? -1 : 1) + ')';
-            cursorEl.style.top = (currentY - (cursorEl.height / 2)) + 'px';
-        }
-        requestAnimationFrame(animate);
-    }
-})();
+    const currentShift = interpolate(
+        shiftPositions[sectionIndex],
+        shiftPositions[sectionIndex + 1] ?? shiftPositions[sectionIndex],
+        sectionProgress
+    );
+
+    const currentOrbit = cameraOrbits[sectionIndex].map((val, i) =>
+        interpolate(val, cameraOrbits[sectionIndex + 1]?.[i] ?? val, sectionProgress)
+    );
+
+    beeModel.style.transform = `translateX(${currentShift}%)`;
+    beeModel.setAttribute("camera-orbit", `${currentOrbit[0]}deg ${currentOrbit[1]}deg`);
+});
