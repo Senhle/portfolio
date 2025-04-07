@@ -1,2 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Portfolio</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#languages">Languages</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <model-viewer src="bee_flying.glb" id="bee-model" camera-orbit="90deg 90deg" autoplay></model-viewer>
+    
+    <section id="home" class="home">
+        <h1>Andile Dhlamini</h1>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="profile-picture">
+            <img src="dee5f68e-6faa-41c7-b5f6-57c256452b37.png" alt="Profile Picture">
+        </div>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>Hi, I'm Andile Gracious Dhlamini, a Software Engineering student at Power Learn Project with a passion for technology, AI, and innovation. I recently started my journey in software development and am excited to build creative and impactful solutions.
 
+                I'm currently exploring:
+                
+                Web development (HTML, CSS, JavaScript).
+                
+                AI and Machine Learning (future career goal).
+                
+                3D animation using HTML, CSS, and JavaScript for my portfolio.
+               
+                As I continue learning, I'm eager to collaborate, solve real-world problems, and grow as a future AI engineer. Let’s connect and create something amazing!</p>
+            <a href="#">Downloadable CV</a>
+        </div>
+    </section>
+
+    <section id="languages" class="Languages">
+        <!-- Moved Tech Languages to the top -->
+        <h2>Tech Languages</h2>
+        <div class="container">
+            <div class="slider">
+                <div class="row">
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">HTML</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">CSS</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">JavaScript</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Python</span></div>
+                </div>
+                <div class="row">
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">C</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">C++</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Java</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">SQL</span></div>
+                </div>
+                <div class="row">
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Rust</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Swift</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Kotlin</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Ruby</span></div>
+                </div>
+                <div class="row">
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Go</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">TypeScript</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Bash</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Dart</span></div>
+                </div>
+                <div class="row">
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">R</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Scala</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">MATLAB</span></div>
+                    <div class="language"><span class="hashtag">#</span><span class="language-name">Julia</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Gallery remains below -->
+        <div class="gallery-content" style="margin-top: 50px;">
+            <div class="outer">
+                <div class="inner">
+                    <img src="bee1.png" alt="Bee 1">
+                </div>
+            </div>
+            <div class="outer">
+                <div class="inner"></div>
+            </div>
+            <div class="outer">
+                <div class="inner">
+                    <img src="bee3.png" alt="Bee 3">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <form class="contact-form">
+            <h2>Contact</h2>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</body>
 </html>
